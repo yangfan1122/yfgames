@@ -18,7 +18,6 @@ package com.efg.framework
 		public var lastSystemState:int;
 		public var appBackBitmapData:BitmapData;
 		public var appBackBitmap:Bitmap;
-		;
 		public var frameRate:int;
 		public var timerPeriod:Number;
 		public var gameTimer:Timer;
