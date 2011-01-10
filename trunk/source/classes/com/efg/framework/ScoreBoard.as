@@ -27,7 +27,7 @@ package com.efg.framework
 		public function createTextElement(key:String, obj:SideBySideScoreElement):void
 		{
 			textElements[key] = obj;
-			addChild(obj);
+			addChild(obj);//文档类中ScoreBoard的实例已加载到舞台上
 		}
 
 		public function update(key:String, value:String):void
