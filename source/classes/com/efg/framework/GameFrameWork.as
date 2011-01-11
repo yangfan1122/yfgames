@@ -12,14 +12,14 @@ package com.efg.framework
 	public class GameFrameWork extends MovieClip
 	{
 		public static const EVENT_WAIT_COMPLETE:String = "wait complete";
-		public var systemFunction:Function;
-		public var currentSystemState:int;
-		public var nextSystemState:int;
-		public var lastSystemState:int;
+		public var systemFunction:Function;//在每帧执行的时候调用相应的状态行为函数
+		public var currentSystemState:int;//通过用一个整形变量来保存当前状态
+		public var nextSystemState:int;//下一个状态
+		public var lastSystemState:int;//之前的状态
 		public var appBackBitmapData:BitmapData;
 		public var appBackBitmap:Bitmap;
 		public var frameRate:int;
-		public var timerPeriod:Number;
+		public var timerPeriod:Number;//通过Timer实例来实现而且游戏也会企图用这个速率来运行
 		public var gameTimer:Timer;
 		public var titleScreen:BasicScreen;
 		public var gameOverScreen:BasicScreen;
@@ -66,7 +66,7 @@ package com.efg.framework
 		public function runGame(e:TimerEvent):void
 		{
 			systemFunction();
-			e.updateAfterEvent();
+			e.updateAfterEvent();//可以让Flash 的显示机制在每个时间周期内平滑的进行屏幕着色，而不是根据.swf文件设置的帧频来刷新屏幕。
 		}
 
 //switchSystem state is called only when the
@@ -75,7 +75,10 @@ package com.efg.framework
 //based simple state machines
 		public function switchSystemState(stateval:int):void
 		{
+			//可以在返回上个状态时有个参考。这种情况可能是我们在STATE_SYSTEM_WAIT状态的一个时间周期内想跳回我们在等待之前的状态。
 			lastSystemState = currentSystemState;
+			
+			
 			currentSystemState = stateval;
 			switch (stateval)
 			{
@@ -117,7 +120,7 @@ package com.efg.framework
 			nextSystemState = FrameWorkStates.STATE_SYSTEM_INSTRUCTIONS;
 		}
 
-		public function systemInstructions():void
+		public function systemInstructions():void //给用户显示介绍画面
 		{
 			addChild(instructionsScreen);
 			instructionsScreen.addEventListener(CustomEventButtonId.BUTTON_ID, okButtonClickListener, false, 0, true);

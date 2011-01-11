@@ -24,7 +24,7 @@ package com.efg.games.stubgame
 			game = new StubGame();
 			setApplicationBackGround(400, 400, false, 0x000000);//400*400，背景黑色
 //add score board to the screen as the seconf layer
-			scoreBoard = new ScoreBoard();
+			scoreBoard = new ScoreBoard();//作为一个题头显示（HUD）让用户获得当前的分数信息
 			addChild(scoreBoard);
 			scoreBoardTextFormat = new TextFormat("_sans", "11", "0xffffff", "true");
 			scoreBoard.createTextElement(SCORE_BOARD_CLICKS, new SideBySideScoreElement(25, 5, 15, "Clicks", scoreBoardTextFormat, 25, "0", scoreBoardTextFormat));
@@ -32,7 +32,7 @@ package com.efg.games.stubgame
 			screenTextFormat = new TextFormat("_sans", "16", "0xffffff", "false");
 			screenTextFormat.align = flash.text.TextFormatAlign.CENTER;
 			screenButtonFormat = new TextFormat("_sans", "12", "0x000000", "false");
-			titleScreen = new BasicScreen(FrameWorkStates.STATE_SYSTEM_TITLE, 400, 400, false, 0x0000dd);
+			titleScreen = new BasicScreen(FrameWorkStates.STATE_SYSTEM_TITLE, 400, 400, false, 0x0000dd);//在父类GameFrameWork中声明，并addChild
 			titleScreen.createOkButton("OK", new Point(170, 250), 40, 20, screenButtonFormat, 0x000000, 0xff0000, 2);
 			titleScreen.createDisplayText("Stub Game", 100, new Point(145, 150), screenTextFormat);
 			instructionsScreen = new BasicScreen(FrameWorkStates.STATE_SYSTEM_INSTRUCTIONS, 400, 400, false, 0x0000dd);
