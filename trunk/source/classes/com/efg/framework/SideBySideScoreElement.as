@@ -22,9 +22,11 @@ package com.efg.framework
 			label.autoSize;
 			label.defaultTextFormat = labelTextFormat;
 			label.text = labelText;
+			label.selectable = false;
 			content.autoSize;
 			content.defaultTextFormat = contentTextFormat;
 			content.text = contentText;
+			content.selectable = false;
 			label.x = 0;
 			content.x = labelWidth + bufferWidth;
 			addChild(label);
